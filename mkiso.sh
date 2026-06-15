@@ -32,7 +32,7 @@ debootstrap --variant=minbase --arch=amd64 testing chroot
 
 #### Remove systemd
 cp nosystemd.sh chroot/tmp/nosystemd.sh
-chroot chroot /tmp/nosystemd.sh
+chroot chroot bash -ex /tmp/nosystemd.sh
 rm chroot/tmp/nosystemd.sh
 
 #### upgrade
