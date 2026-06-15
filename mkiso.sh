@@ -54,7 +54,7 @@ chroot chroot apt-get dist-upgrade -y
 chroot chroot apt-get install grub-pc-bin grub-efi-ia32-bin grub-efi -y
 
 #### live packages for debian/devuan
-chroot chroot apt-get install live-config live-boot -y
+chroot chroot apt-get install live-config-sysvinit live-boot -y
 echo "DISABLE_DM_VERITY=true" >> chroot/etc/live/boot.conf
 
 #### Configure system
