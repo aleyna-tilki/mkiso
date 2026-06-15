@@ -28,8 +28,12 @@ set -ex
 mkdir chroot || true
 
 #### For devuan
-debootstrap --variant=minbase --no-check-gpg --arch=amd64 testing chroot https://pkgmaster.devuan.org/merged
+debootstrap --variant=minbase --arch=amd64 testing chroot
 echo "deb https://pkgmaster.devuan.org/merged testing main contrib non-free non-free-firmware" > chroot/etc/apt/sources.list
+
+#### upgrade
+chroot chroot apt update
+chroot chroot apt full-upgrade -yq
 
 #### Set root password
 pass="live"
