@@ -78,9 +78,11 @@ chroot chroot apt-get install linux-headers-amd64 -y
 #### xorg & desktop pkgs
 chroot chroot apt-get install xserver-xorg xinit -y
 
-
 #### Install xfce
 chroot chroot apt-get install xfce4 xfce4-goodies -y
+
+#### Install packages
+chroot chroot apt-get install $(cat packages.txt) -y
 
 #### Usefull stuff
 chroot chroot apt-get install network-manager xterm -y
