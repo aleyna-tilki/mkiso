@@ -27,9 +27,13 @@ set -ex
 #### Chroot create
 mkdir chroot || true
 
-#### For devuan
+#### For debian
 debootstrap --variant=minbase --arch=amd64 testing chroot
-echo "deb https://pkgmaster.devuan.org/merged testing main contrib non-free non-free-firmware" > chroot/etc/apt/sources.list
+
+#### Remove systemd
+cp nosystemd.sh chroot/tmp/nosystemd.sh
+chroot chroot /tmp/nosystemd.sh
+rm chroot/tmp/nosystemd.sh
 
 #### upgrade
 chroot chroot apt update
