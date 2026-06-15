@@ -31,9 +31,9 @@ mkdir chroot || true
 debootstrap --variant=minbase --arch=amd64 testing chroot
 
 #### Remove systemd
-cp nosystemd.sh chroot/tmp/nosystemd.sh
-chroot chroot bash -ex /tmp/nosystemd.sh
-rm chroot/tmp/nosystemd.sh
+#cp nosystemd.sh chroot/tmp/nosystemd.sh
+#chroot chroot bash -ex /tmp/nosystemd.sh
+#rm chroot/tmp/nosystemd.sh
 
 #### upgrade
 chroot chroot apt update
@@ -53,23 +53,23 @@ chroot chroot apt-get install gnupg -y
 chroot chroot apt-get dist-upgrade -y
 chroot chroot apt-get install grub-pc-bin grub-efi-ia32-bin grub-efi -y
 
-#### live packages for debian/devuan
-chroot chroot apt-get install live-config-sysvinit live-boot -y
+#### live packages
+chroot chroot apt-get install live-config live-boot -y
 echo "DISABLE_DM_VERITY=true" >> chroot/etc/live/boot.conf
 
-#### Configure system
-cat > chroot/etc/apt/apt.conf.d/01norecommend << EOF
-APT::Install-Recommends "0";
-APT::Install-Suggests "0";
-EOF
+#### customize
+cp customize-airootfs.sh chroot/tmp/customize-airootfs.sh
+chroot chroot bash -ex /tmp/customize-airootfs.sh
+rm chroot/tmp/customize-airootfs.sh
+
 
 # Set sh as bash inside of dash (optional)
 rm -f chroot/bin/sh
 ln -s bash chroot/bin/sh
 
-#### kernel 
+#### kernel
 chroot chroot apt-get install linux-image-amd64 -y
-chroot chroot apt-get install linux-headers-amd64 -y
+#chroot chroot apt-get install linux-headers-amd64 -y
 
 #### xorg & desktop pkgs
 chroot chroot apt-get install xserver-xorg xinit -y
