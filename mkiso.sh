@@ -62,7 +62,7 @@ chroot chroot apt-get dist-upgrade -y
 chroot chroot apt-get install grub-pc-bin grub-efi-ia32-bin grub-efi -y
 
 #### live packages
-chroot chroot apt-get install live-config live-config-sysvinit live-boot -y
+chroot chroot apt-get install user-setup live-config live-config-sysvinit live-boot -y
 echo "DISABLE_DM_VERITY=true" >> chroot/etc/live/boot.conf
 
 #### customize
@@ -108,9 +108,9 @@ for dir in dev dev/pts proc sys ; do
     while umount -lf -R chroot/$dir 2>/dev/null ; do true; done
 done
 # For better installation time
-#mksquashfs chroot filesystem.squashfs -comp gzip -wildcards
+mksquashfs chroot filesystem.squashfs -comp gzip -wildcards
 # For better compress ratio
-mksquashfs chroot filesystem.squashfs -comp xz -wildcards
+# mksquashfs chroot filesystem.squashfs -comp xz -wildcards
 
 ### move squashfs file
 mv filesystem.squashfs aleyna/live/filesystem.squashfs
