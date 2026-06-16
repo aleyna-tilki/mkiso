@@ -30,6 +30,8 @@ mkdir chroot || true
 #### For debian
 debootstrap --variant=minbase --arch=amd64 testing chroot
 echo "deb https://deb.debian.org/debian testing main contrib non-free non-free-firmware" > chroot/etc/apt/sources.list
+echo "deb https://deb.devuan.org/merged testing main contrib non-free non-free-firmware" >> chroot/etc/apt/sources.list
+
 #### Remove systemd
 #cp nosystemd.sh chroot/tmp/nosystemd.sh
 #chroot chroot bash -ex /tmp/nosystemd.sh
@@ -54,7 +56,7 @@ chroot chroot apt-get dist-upgrade -y
 chroot chroot apt-get install grub-pc-bin grub-efi-ia32-bin grub-efi -y
 
 #### live packages
-chroot chroot apt-get install live-config live-boot -y
+chroot chroot apt-get install live-config-sysvinit live-boot -y
 echo "DISABLE_DM_VERITY=true" >> chroot/etc/live/boot.conf
 
 #### customize
