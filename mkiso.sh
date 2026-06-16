@@ -29,7 +29,7 @@ mkdir chroot || true
 
 #### For debian
 debootstrap --variant=minbase --arch=amd64 testing chroot
-
+echo "deb https://deb.debian.org/debian testing main contrib non-free non-free-firmware" > /chroot/etc/apt/sources.list
 #### Remove systemd
 #cp nosystemd.sh chroot/tmp/nosystemd.sh
 #chroot chroot bash -ex /tmp/nosystemd.sh
