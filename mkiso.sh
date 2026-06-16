@@ -30,7 +30,13 @@ mkdir chroot || true
 #### For debian
 debootstrap --variant=minbase --arch=amd64 testing chroot
 echo "deb https://deb.debian.org/debian testing main contrib non-free non-free-firmware" > chroot/etc/apt/sources.list
-echo "deb https://deb.devuan.org/merged testing main contrib non-free non-free-firmware" >> chroot/etc/apt/sources.list
+echo "deb http://deb.devuan.org/merged testing main contrib non-free non-free-firmware" >> chroot/etc/apt/sources.list
+
+#### devuan
+chroot chroot apt update  --allow-insecure-repositories
+chroot chroot apt install devuan-keyring --allow-unauthenticated
+chroot chroot apt update
+chroot chroot apt full-upgrade -yq
 
 #### Remove systemd
 #cp nosystemd.sh chroot/tmp/nosystemd.sh
