@@ -33,4 +33,5 @@ xfce4-whiskermenu-plugin
 xfce-polkit
 sudo
 rsync
+libpam-elogind
 --no-install-recommends

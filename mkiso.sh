@@ -118,7 +118,7 @@ mv filesystem.squashfs aleyna/live/filesystem.squashfs
 #### Write grub.cfg
 mkdir -p aleyna/boot/grub/
 echo 'menuentry "Start Aleyna Tilki GNU/Linux 64-bit" --class aleyna {' > aleyna/boot/grub/grub.cfg
-echo '    linux /boot/vmlinuz boot=live live-config quiet --' >> aleyna/boot/grub/grub.cfg
+echo '    linux /boot/vmlinuz boot=live live-config locales=tr_TR.UTF-8,en_US.UTF-8 keyboard-layouts=us,tr username=aleyna hostname=tilki user-fullname="Aleyna Tilki" noswap quiet console=tty31 --' >> aleyna/boot/grub/grub.cfg
 echo '    initrd /boot/initrd.img' >> aleyna/boot/grub/grub.cfg
 echo '}' >> aleyna/boot/grub/grub.cfg
 
