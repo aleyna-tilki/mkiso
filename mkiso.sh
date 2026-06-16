@@ -62,7 +62,7 @@ chroot chroot apt-get dist-upgrade -y
 chroot chroot apt-get install grub-pc-bin grub-efi-ia32-bin grub-efi -y
 
 #### live packages
-chroot chroot apt-get install live-config-sysvinit live-boot -y
+chroot chroot apt-get install live-config live-config-sysvinit live-boot -y
 echo "DISABLE_DM_VERITY=true" >> chroot/etc/live/boot.conf
 
 #### customize
