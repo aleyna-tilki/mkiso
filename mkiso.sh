@@ -75,7 +75,7 @@ chroot chroot apt-get install linux-image-amd64 -y
 chroot chroot apt-get install xserver-xorg xinit -y
 
 #### Install packages
-chroot chroot apt-get install $(cat packages.txt firmware.txt| tr "\n" " ") -y
+chroot chroot apt-get install $(cat packages.txt firmware.txt | grep -v '#'| tr "\n" " ") -y
 
 #### Clear logs and history
 chroot chroot apt-get clean
