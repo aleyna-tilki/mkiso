@@ -51,6 +51,9 @@ chroot chroot apt full-upgrade -yq
 pass="live"
 echo -e "$pass\n$pass\n" | chroot chroot passwd
 
+#### set hostname
+echo "tilki" > chroot/etc/hostname
+
 #### Fix apt & bind
 # apt sandbox user root
 echo "APT::Sandbox::User root;" > chroot/etc/apt/apt.conf.d/99sandboxroot
