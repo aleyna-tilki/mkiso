@@ -13,7 +13,7 @@ yes | apt install ./*.deb -yq --allow-downgrades
 
 ### hardened stuff
 mkdir -p /etc/sysctl.d/
-wget https://gitlab.com/turkman/devel/sources/base-files/-/raw/master/rootfs/etc/sysctl.d/990-security.conf -O /etc/sysctl.d/990-security.conf
+wget https://gitlab.com/turkmen-linux/devel/sources/base-files/-/raw/master/rootfs/etc/sysctl.d/990-security.conf -O /etc/sysctl.d/990-security.conf
 echo "b08dfa6083e7567a1921a715000001fb" > /etc/machine-id
 ### module blacklists
 for list in mei pmt webcam wmi ; do
