@@ -35,4 +35,7 @@ dbus-x11
 sudo
 rsync
 libpam-elogind
+sysvinit-core
+elogind
+openrc
 --no-install-recommends
