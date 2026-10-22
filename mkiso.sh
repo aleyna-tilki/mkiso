@@ -90,7 +90,8 @@ chroot chroot apt-get install xserver-xorg xinit -y
 chroot chroot apt-get install $(cat packages.txt | grep -v '#'| tr "\n" " ") -y
 
 #### dirty fixes (need fix)
-chroot chroot chown lightdm /var/lib/lightdm
+mkdir -p chroot/var/lib/lightdm
+chroot chroot chown lightdm:root /var/lib/lightdm
 
 #### Clear logs and history
 chroot chroot apt-get clean
