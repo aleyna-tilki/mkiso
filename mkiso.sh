@@ -104,7 +104,7 @@ cp -pf chroot/boot/initrd.img-* aleyna/boot/initrd.img
 cp -pf chroot/boot/vmlinuz-* aleyna/boot/vmlinuz
 
 #### Remove initrd.img for minimize iso size (optional)
-rm -rf chroot/boot/initrd.img-*
+#rm -rf chroot/boot/initrd.img-*
 
 #### Create squashfs
 for dir in dev dev/pts proc sys ; do
