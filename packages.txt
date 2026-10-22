@@ -31,6 +31,7 @@ network-manager
 wpasupplicant
 xfce4-whiskermenu-plugin
 xfce-polkit
+dbus-x11
 sudo
 rsync
 libpam-elogind
