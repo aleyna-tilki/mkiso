@@ -37,5 +37,6 @@ rsync
 libpam-elogind
 sysvinit-core
 elogind
-openrc
+sysv-rc
+libglib2.0-bin
 --no-install-recommends
