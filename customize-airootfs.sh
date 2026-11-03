@@ -37,7 +37,13 @@ APT::Install-Recommends "0";
 APT::Install-Suggests "0";
 EOF
 
-cat > /etc/dpkg/dpkg.cfg.d/excludes << 'EOF'
+# kernel parameters
+cat > /etc/default/grub.d/31-console.cfg << EOF
+GRUB_CMDLINE_LINUX_DEFAULT="$GRUB_CMDLINE_LINUX_DEFAULT console=tty31"
+EOF
+
+# remove all languages except turkish
+cat > /etc/dpkg/dpkg.cfg.d/language-excludes << EOF
 path-exclude=/usr/share/locale/*
 path-exclude=/usr/share/man/*
 path-exclude=/usr/share/help/*
