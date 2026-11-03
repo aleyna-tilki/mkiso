@@ -37,17 +37,16 @@ APT::Install-Recommends "0";
 APT::Install-Suggests "0";
 EOF
 
-#### remove man pages and non-turkish languages
-cat > /etc/dpkg/dpkg.cfg.d/excludes << EOF
+cat > /etc/dpkg/dpkg.cfg.d/excludes << 'EOF'
 path-exclude=/usr/share/locale/*
 path-exclude=/usr/share/man/*
 path-exclude=/usr/share/help/*
 path-exclude=/usr/share/doc/*
 path-exclude=/usr/share/info/*
-path-exclude=/usr/share/i18n/*
 
+# Exclude Turkish and C
 path-include=/usr/share/locale/tr*
-path-include=/usr/share/i18n/locales/tr_*
+path-include=/usr/share/locale/C*
 EOF
 
 rm -rf /usr/share/man/*
@@ -55,5 +54,11 @@ rm -rf /usr/share/help/*
 rm -rf /usr/share/doc/*
 rm -rf /usr/share/info/*
 
-find /usr/share/locale/ -mindepth 1 -maxdepth 1 ! -name 'tr' ! -name 'tr_*' -exec rm -rf {} +
-find /usr/share/i18n/locales/ -mindepth 1 -maxdepth 1 ! -name 'tr_*' -exec rm -rf {} +
+find /usr/share/locale/ -mindepth 1 -maxdepth 1 \
+    ! -name 'tr' \
+    ! -name 'tr_*' \
+    ! -name 'C' \
+    ! -name 'C.*' \
+    ! -name 'POSIX' \
+    -exec rm -rf {} +
+
