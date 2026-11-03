@@ -39,7 +39,7 @@ EOF
 
 # kernel parameters
 cat > /etc/default/grub.d/31-console.cfg << EOF
-GRUB_CMDLINE_LINUX_DEFAULT="$GRUB_CMDLINE_LINUX_DEFAULT console=tty31"
+GRUB_CMDLINE_LINUX_DEFAULT="console=tty31 \$GRUB_CMDLINE_LINUX_DEFAULT"
 EOF
 
 # remove all languages except turkish
